@@ -1,0 +1,11 @@
+/* Register and Log In pages */
+
+.login-form-header,
+.login-form {
+	max-width: 24rem;
+	margin: auto;
+}
+.login-form-header {
+	text-align: center;
+	margin-bottom: 2rem;
+}
