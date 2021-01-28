@@ -1,22 +1,25 @@
+<?php
+$path = $GLOBALS['phpReqPath'];
+?>
 <nav class="header-inner">
 
     <a href="/" class="header-wordmark"><i class="fad fa-cat"></i> Caturday Night</a>
 
     <?php if ($isLoggedIn): ?>
     <ul class="nav-links">
-        <li class="nav-link nav-link--home <?= ($title === 'Home') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link nav-link--home <?= ($path === '/') ? 'nav-link--current-page' : '' ?>">
             <a href="/">
                 <i class="fad fa-house icon-left"></i>
                 <span class="nav-link__label">Home</span>
             </a>
         </li>
-        <li class="nav-link <?= ($title === 'Profile') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link <?= ($path === '/profile/') ? 'nav-link--current-page' : '' ?>">
             <a href="/profile/">
                 <i class="fad fa-user-circle icon-left"></i>
                 <span class="nav-link__label">Profile</span>
             </a>
         </li>
-        <li class="nav-link <?= ($title === 'Log Out') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link <?= ($path === '/logout/') ? 'nav-link--current-page' : '' ?>">
             <a href="/logout/">
                 <i class="fad fa-sign-out icon-left"></i>
                 <span class="nav-link__label">Log Out</span>
@@ -25,19 +28,19 @@
     </ul>
     <?php else: ?>
     <ul class="nav-links">
-        <li class="nav-link nav-link--home <?= ($title === 'Home') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link nav-link--home <?= ($path === '/') ? 'nav-link--current-page' : '' ?>">
             <a href="/">
                 <i class="fad fa-house icon-left"></i>
                 <span class="nav-link__label">Home</span>
             </a>
         </li>
-        <li class="nav-link <?= ($title === 'Register') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link <?= ($path === '/register/') ? 'nav-link--current-page' : '' ?>">
             <a href="/register/">
                 <i class="fad fa-user-plus fa-sm icon-left"></i>
                 <span class="nav-link__label">Register</span>
             </a>
         </li>
-        <li class="nav-link <?= ($title === 'Log In') ? 'nav-link--current-page' : '' ?>">
+        <li class="nav-link <?= ($path === '/login/') ? 'nav-link--current-page' : '' ?>">
             <a href="/login/">
                 <i class="fad fa-sign-in icon-left"></i>
                 <span class="nav-link__label">Log In</span>

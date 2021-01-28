@@ -1,6 +1,8 @@
 <?php
 // PHP globals
 $phpDocRoot = $_SERVER['DOCUMENT_ROOT'];
+$phpReqUri = $_SERVER['REQUEST_URI'];
+$phpReqPath = strtok($phpReqUri, '?');
 $phpReqMethod = $_SERVER['REQUEST_METHOD'];
 $phpUserIp = $_SERVER['REMOTE_ADDR'];
 $phpUserPort = $_SERVER['REMOTE_PORT'];
