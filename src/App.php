@@ -10,8 +10,13 @@ require_once 'database.php';
 require_once 'auth.php';
 require_once 'logging.php';
 
-// UI component function
+// UI components
 function ui($component, $props) {
     extract($props);
     require $_SERVER['DOCUMENT_ROOT'] . '/_partials/' . $component . '.php';
+}
+
+// Sanitize text to be displayed
+function safe($text) {
+    return htmlentities($text);
 }

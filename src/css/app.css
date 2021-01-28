@@ -2,7 +2,8 @@
 html {
     --text1: #f0f0f0;
     --text2: #cccccc;
-    --text3: #aaaaaa;
+	--text3: #aaaaaa;
+	--text4: #656565;
 	--accent1a: #1d1001;
     --accent1b: #261506;
     --accent1c: #3f250e;
@@ -12,9 +13,9 @@ html {
 	--background1: #030303;
     --background2: #1a1817;
     --background3: #25231f;
-	--border1: 1px solid var(--accent1b);
-	--border2: 1px solid var(--accent1c);
-	--border3: 1px solid var(--accent2a);
+	--border1: 1px solid var(--accent2a);
+	--border2: 1px solid var(--accent2b);
+	--border3: 1px solid var(--accent2c);
 	--border-major1: .4rem solid var(--accent2b);
 	--border-major2: .4rem solid var(--accent2c);
 	--border-radius1: .4rem;
@@ -69,13 +70,13 @@ h6 {font-size: .6em; margin: 0 0 .4rem 0;}
 /* Basic tags */
 p {margin: 0;}
 dialog {padding: 0; border: none;}
-label {display: block; font-size: .9rem; color: var(--accent1a);}
+label {display: block; font-size: .9rem; color: var(--accent2b);}
 label img {pointer-events: none;}
 ul {list-style-type: disc; padding-left: 1.5rem; margin: 1rem 0;}
 li {margin: 0;}
 textarea {font-size: 1em; padding: .4em .6em; resize: vertical;}
 fieldset {padding: .8rem 1rem; border: var(--border3); border-radius: var(--border-radius1);}
-legend {font-size: .8rem; color: var(--accent1a);}
+legend {font-size: .8rem; color: var(--accent2b);}
 hr {border: var(--border3);}
 figure {margin: 0; padding: 0;}
 img {display: block;}
@@ -85,13 +86,13 @@ address {font-style: normal;}
 
 /* Links */
 a {
-	color: var(--accent1b);
+	color: var(--accent2a);
 	transition: color 400ms;
 	cursor: pointer;
 }
-a:hover {color: var(--accent2a);}
-a:active {color: var(--accent2b); transition: none;}
-a.same-page {color: var(--accent2a); cursor: default;}
+a:hover {color: var(--accent2b);}
+a:active {color: var(--accent2c); transition: none;}
+a.same-page {color: var(--accent2b); cursor: default;}
 
 
 /* Forms and Inputs */
@@ -104,10 +105,10 @@ input[type="text"], input[type="number"], input[type="tel"], input[type="file"],
 	width: 100%;
 	font-size: 1.1rem;
 	font-family: 'Arial', sans-serif;
-	padding: .4rem .6rem;
+	padding: .5rem .8rem;
 	border-radius: var(--border-radius1);
 	color: var(--text2);
-	border: var(--border2);
+	border: 1px solid var(--text4);
 	background-color: var(--background1);
 	box-shadow: none;
 }
@@ -120,6 +121,11 @@ input[type="text"]::placeholder, input[type="number"]::placeholder, input[type="
 	font-size: .8rem;
 	color: #999999;
 	opacity: 1;
+}
+label > input:first-child,
+label > select:first-child,
+label > textarea:first-child {
+	margin-top: .2rem;
 }
 button, a.button {
 	display: inline-block;
@@ -134,22 +140,22 @@ button, a.button {
 	text-align: center;
 	vertical-align: middle;
 	box-shadow: none;
-	background-color: var(--accent1b);
+	background-color: var(--accent2a);
 	background-size: 100%;
 	transition: background-color 600ms, transform 400ms, opacity 400ms !important;
 	overflow: hidden;
 	cursor: pointer;
 }
 button:hover, a.button:hover {
-	background-color: var(--accent2a);
+	background-color: var(--accent2b);
 }
 button:active, a.button:active {
 	transform: scale(.92);
-	background-color: var(--accent2b);
+	background-color: var(--accent2c);
 	transition: none !important;
 }
 input:focus, select:focus, textarea:focus, button:focus, a.button:focus {
-	box-shadow: 0 0 3px 1px var(--accent1b) !important;
+	box-shadow: 0 0 3px 1px var(--accent2c) !important;
     outline: none;
 }
 input::placeholder, textarea::placeholder {
@@ -166,17 +172,17 @@ button[disabled], a.button[disabled] {
 
 button.plain-button, a.button.plain-button {
 	font-size: 1em;
-	color: var(--accent1b);
+	color: var(--accent2a);
 	padding: 0;
 	margin: 0;
 	background: none;
 	transition: color 400ms;
 }
 button.plain-button:hover, a.button.plain-button:hover {
-	color: var(--accent2a);
+	color: var(--accent2b);
 }
 button.plain-button:active, a.button.plain-button:active {
-	color: var(--accent2b); 
+	color: var(--accent2c); 
 	transform: none; 
 	transition: none;
 }
@@ -190,7 +196,7 @@ button.plain-button:active, a.button.plain-button:active {
 }
 .radio-check-set__label {
 	font-size: .9rem;
-	color: var(--accent1a);
+	color: var(--accent2b);
 }
 
 .input-note {
@@ -313,6 +319,7 @@ header .header-hero::before {
 header .header-hero__heading {
 	position: relative;
 	margin: 1rem;
+	text-align: center;
 }
 
 main {

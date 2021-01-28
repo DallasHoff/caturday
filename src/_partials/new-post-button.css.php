@@ -11,6 +11,7 @@
 	height: 4rem;
 	font-size: 2.5rem;
 	line-height: 1em;
+	color: var(--accent1b);
 	background-color: var(--accent2a);
 	border-radius: 50%;
 	box-shadow: var(--material-shadow1);
