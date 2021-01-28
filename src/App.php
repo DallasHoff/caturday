@@ -1,16 +1,13 @@
 <?php
-// PHP settings and information
-$docRoot = $_SERVER['DOCUMENT_ROOT'];
-date_default_timezone_set('America/New_York');
+// PHP globals
+$phpDocRoot = $_SERVER['DOCUMENT_ROOT'];
+$phpReqMethod = $_SERVER['REQUEST_METHOD'];
+$phpUserIp = $_SERVER['REMOTE_ADDR'];
+$phpUserPort = $_SERVER['REMOTE_PORT'];
 
-// Session
-session_start();
-$isLoggedIn = isset($_SESSION['username']);
-$username = $isLoggedIn ? $_SESSION['username'] : null;
-$isAdmin = isset($_SESSION['isAdmin']);
-
-// Database connection and action logging
+// Database
 require_once 'database.php';
+require_once 'auth.php';
 require_once 'logging.php';
 
 // UI component function

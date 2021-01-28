@@ -1,4 +1,6 @@
 <?php
-session_start();
-session_destroy();
+echo '501: Not Implemented';
+http_response_code(501);
+exit();
+
 header('Location: /');
