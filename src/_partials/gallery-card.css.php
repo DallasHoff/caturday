@@ -35,7 +35,6 @@
 .gallery-card__heading a,
 .gallery-card__author a {
 	color: inherit;
-	text-decoration: none;
 }
 .gallery-card__description {
 	font-size: .9em;
@@ -56,6 +55,13 @@
 		transform: translateY(-50%);
 		width: 100%;
 		height: auto;
+	}
+
+	@supports (object-fit: cover) {
+		.gallery-card__image {
+			object-fit: cover;
+			height: 100%;
+        }
 	}
 
 }

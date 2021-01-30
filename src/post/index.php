@@ -8,7 +8,7 @@ require 'page.php';
     <?php ui('meta', ['title' => $title]); ?>
 </head>
 <body>
-	<?php ui('header', ['title' => $title]); ?>
+	<?php ui('header', ['title' => $title, 'hideHero' => true]); ?>
 	<main>
 		<article>
 			<section>
@@ -16,6 +16,7 @@ require 'page.php';
                 <?php if ($postId === null): ?>
                 <h2>Bad Request</h2>
                 <?php elseif ($postExists === true): ?>
+                <h2><?= safe($title) ?></h2>
                 <?php else: ?>
                 <h2>Post Not Found</h2>
                 <?php endif; ?>

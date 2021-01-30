@@ -88,9 +88,10 @@ address {font-style: normal;}
 a {
 	color: var(--accent2a);
 	transition: color 400ms;
+	text-decoration: none;
 	cursor: pointer;
 }
-a:hover {color: var(--accent2b);}
+a:hover {color: var(--accent2b); text-decoration: underline;}
 a:active {color: var(--accent2c); transition: none;}
 a.same-page {color: var(--accent2b); cursor: default;}
 
@@ -325,7 +326,6 @@ header .header-hero__heading {
 main {
 	background-color: var(--background3);
 	padding: 2rem 0;
-	overflow: hidden;
 }
 main article > section {
 	margin-bottom: 3rem;

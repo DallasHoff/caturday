@@ -17,4 +17,12 @@
     }
 
 }
+
+@media (min-width: 1000px) {
+
+	.card-gallery {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+}
 </style>

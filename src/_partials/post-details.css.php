@@ -29,8 +29,12 @@
 @media (min-width: 720px) {
 
 	.post-details {
-		grid-template-columns: auto minmax(240px, 1fr);
+		grid-template-columns: auto minmax(280px, 1fr);
 		grid-template-rows: none;
+    }
+    .post-details__info {
+        position: sticky;
+        top: 2rem;
     }
     
 }
