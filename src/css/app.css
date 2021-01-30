@@ -116,7 +116,7 @@ input[type="text"], input[type="number"], input[type="tel"], input[type="file"],
 input[type="file"] {font-size: 1em;}
 select {white-space: nowrap;}
 input[type="text"].invalid, input[type="number"].invalid, input[type="tel"].invalid, input[type="file"].invalid, input[type="email"].invalid, input[type="password"].invalid, select.invalid, textarea.invalid {
-	color: var(--warning1);
+	border-color: var(--warning1);
 }
 input[type="text"]::placeholder, input[type="number"]::placeholder, input[type="tel"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, textarea::placeholder {
 	font-size: .8rem;
