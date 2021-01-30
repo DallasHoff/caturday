@@ -7,7 +7,7 @@ require 'page.php';
 <head>
     <?php ui('meta', ['title' => $title]); ?>
 	<link rel="stylesheet" href="/css/auth.css">
-	<script defer src="/js/form-field-validity.js"></script>
+	<script defer src="/js/form-validity.js"></script>
 </head>
 <body>
 	<?php ui('header', ['title' => $title]); ?>
@@ -18,7 +18,7 @@ require 'page.php';
 			        <h2>Join Caturday Night!</h2>
 					<p>Already have an account? <a href="/login/">Log In.</a></p>
 				</div>
-				<form method="POST" class="login-form" onsubmit="this.querySelectorAll('[type=submit]').forEach(el => el.disabled = true)">
+				<form method="POST" class="login-form">
                     
 					<label>Choose a Username
 						<input 
