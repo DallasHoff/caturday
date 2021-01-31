@@ -7,6 +7,7 @@ require 'page.php';
 <head>
     <?php ui('meta', ['title' => $title]); ?>
     <link rel="stylesheet" href="/css/auth.css">
+	<script defer src="/js/form-validity.js"></script>
 </head>
 <body>
 	<?php ui('header', ['title' => $title]); ?>
@@ -20,19 +21,32 @@ require 'page.php';
 				<form method="POST" class="login-form">
 
 					<label>Username
-						<input type="text" name="username" value="<?= safe($username) ?>" maxlength="100" required>
+						<input 
+						type="text" 
+						name="username" 
+						value="<?= safe($username) ?>" 
+						maxlength="<?= $usernameMaxlength ?>" 
+						required
+						class="<?= $usernameClass ?>"
+						>
 					</label>
                     <div class="spacer"></div>
                     
 					<label>Password
-						<input type="password" name="password" value="<?= safe($password) ?>" required>
+						<input 
+						type="password" 
+						name="password" 
+						value="<?= safe($password) ?>" 
+						required
+						class="<?= $passwordClass ?>"
+						>
                     </label>
                     <a href="/reset-password/" class="login-field-link">Forgot Password?</a>
                     <div class="spacer"></div>
                     
 					<?php if ($loginError): ?>
 					<div class="warning-message">
-						<p>Incorrect username or password.</p>
+						<p><?= $loginError ?></p>
 					</div>
 					<div class="spacer"></div>
                     <?php endif; ?>

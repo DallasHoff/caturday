@@ -5,7 +5,7 @@ $path = $GLOBALS['phpReqPath'];
 
     <a href="/" class="header-wordmark"><i class="fad fa-cat"></i> Caturday Night</a>
 
-    <?php if ($isLoggedIn): ?>
+    <?php if ($authIsLoggedIn): ?>
     <ul class="nav-links">
         <li class="nav-link nav-link--home <?= ($path === '/') ? 'nav-link--current-page' : '' ?>">
             <a href="/">
