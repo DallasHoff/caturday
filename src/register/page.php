@@ -76,7 +76,7 @@ if ($phpReqMethod === 'POST') {
     if ($registerError === null) {
 
         // Create session
-        // TODO
+        authCreateSession($username);
 
         // Log success
         logAction('register_success', array(

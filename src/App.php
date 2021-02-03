@@ -14,6 +14,9 @@ require_once 'database.php';
 require_once 'auth.php';
 require_once 'logging.php';
 
+// Set up session state
+authCheckSession();
+
 // UI components
 function ui($component, $props) {
     extract($props);

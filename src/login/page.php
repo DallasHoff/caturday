@@ -59,7 +59,7 @@ if ($phpReqMethod === 'POST') {
     if ($loginError === null) {
 
         // Create session
-        // TODO
+        authCreateSession($username);
 
         // Log success
         logAction('login_success', array(
