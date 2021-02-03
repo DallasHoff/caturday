@@ -4,6 +4,7 @@ $title = 'Log In';
 $username = null;
 $password = null;
 $loginError = null;
+$isAdminLogin = false;
 
 $usernameClass = '';
 $passwordClass = '';
@@ -36,10 +37,20 @@ if ($phpReqMethod === 'POST') {
         $userInfo = dbQuery("select password, is_admin from users where username=?", array($username));
         if (empty($userInfo)) {
             $loginError = 'Incorrect username or password.'; // username does not exist
+            logAction('login_failure', array(
+                'reason' => 'invalid username',
+                'username' => $username
+            ));
         } else {
             $passwordHash = $userInfo[0]['password'];
+            $isAdminLogin = $userInfo[0]['is_admin'] === '1';
             if (!$passwordHash || password_verify($password, $passwordHash) !== true) {
                 $loginError = 'Incorrect username or password.'; // incorrect password
+                logAction('login_failure', array(
+                    'reason' => 'incorrect password',
+                    'username' => $username,
+                    'is_admin' => $isAdminLogin ? '1' : '0'
+                ));
             }
         }
     }
@@ -49,9 +60,15 @@ if ($phpReqMethod === 'POST') {
 
         // Create session
         // TODO
+
+        // Log success
+        logAction('login_success', array(
+            'username' => $username,
+            'is_admin' => $isAdminLogin ? '1' : '0'
+        ));
         
         // Redirect
-        if ($userInfo[0]['is_admin'] === '1') {
+        if ($isAdminLogin) {
             header('Location: /admin/');
             exit();
         } else {

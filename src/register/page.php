@@ -46,6 +46,10 @@ if ($phpReqMethod === 'POST') {
         count(dbQuery("select username from users where username=?", array($username))) !== 0
     ) {
         $registerError = 'Sorry, that username is already in use.';
+        logAction('register_failure', array(
+            'reason' => 'taken username',
+            'username' => $username
+        ));
     }
 
     // Register user
@@ -61,6 +65,10 @@ if ($phpReqMethod === 'POST') {
             ));
         } catch (Throwable $e) {
             $registerError = 'Oops, an error occurred. Please try again.';
+            logAction('register_failure', array(
+                'reason' => 'insert error',
+                'username' => $username
+            ));
         }
     }
 
@@ -70,6 +78,11 @@ if ($phpReqMethod === 'POST') {
         // Create session
         // TODO
 
+        // Log success
+        logAction('register_success', array(
+            'username' => $username
+        ));
+        
         // Redirect
         header('Location: /');
         exit();
