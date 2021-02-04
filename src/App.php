@@ -7,6 +7,7 @@ $phpReqMethod = $_SERVER['REQUEST_METHOD'];
 $phpUserIp = $_SERVER['REMOTE_ADDR'];
 $phpUserPort = $_SERVER['REMOTE_PORT'];
 
+$appHost = 'websec.dallashoffman.com';
 $appComponentScripts = array();
 
 // Database

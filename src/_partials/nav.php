@@ -1,5 +1,8 @@
 <?php
 $path = $GLOBALS['phpReqPath'];
+$authIsLoggedIn = $GLOBALS['authIsLoggedIn'];
+$authUsername = $GLOBALS['authUsername'];
+$phpReqUri = $GLOBALS['phpReqUri'];
 ?>
 <nav class="header-inner">
 
@@ -14,13 +17,13 @@ $path = $GLOBALS['phpReqPath'];
             </a>
         </li>
         <li class="nav-link <?= ($path === '/profile/') ? 'nav-link--current-page' : '' ?>">
-            <a href="/profile/">
+            <a href="/profile/?user=<?= urlencode(safe($authUsername)) ?>">
                 <i class="fad fa-user-circle icon-left"></i>
                 <span class="nav-link__label">Profile</span>
             </a>
         </li>
         <li class="nav-link <?= ($path === '/logout/') ? 'nav-link--current-page' : '' ?>">
-            <a href="/logout/">
+            <a href="/logout/?return=<?= $phpReqUri ?>">
                 <i class="fad fa-sign-out icon-left"></i>
                 <span class="nav-link__label">Log Out</span>
             </a>
