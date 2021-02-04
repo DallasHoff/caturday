@@ -21,6 +21,14 @@ function dbGenId() {
     return $id;
 }
 
+// Token Generator
+function dbGenToken() {
+    $numRandomBytes = 32;
+    $token = random_bytes($numRandomBytes);
+    $token = base64_encode($token);
+    return $token;
+}
+
 // Query
 function dbQuery($sql, $params) {
     global $db;
