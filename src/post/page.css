@@ -1,56 +1,64 @@
-.post-info {
+.edit-post {
 	display: grid;
 	grid-template-rows: auto auto;
 	grid-gap: 2rem;
 	align-items: start;
 }
-.post-info__figure {
-	background-color: var(--background1);
-	border: var(--border2);
+.edit-post__figure {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+	background-color: var(--background2);
+	border: 1px solid var(--text4);
 	border-radius: var(--border-radius1);
 	overflow: hidden;
 }
-.post-info__image {
+.edit-post__figure--show-image {min-height: auto !important;}
+.edit-post__figure-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+.edit-post__figure--show-image .edit-post__figure-inner {display: none;}
+.edit-post__figure-icon {
+    font-size: 5em;
+    opacity: .6;
+    margin-bottom: 1rem;
+}
+.edit-post__image {
+    display: none;
 	width: 100%;
-	max-width: 25em;
 	height: auto;
 	margin: auto;
 }
-.post-info__list {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+.edit-post__figure--show-image .edit-post__image {display: block;}
+.edit-post__image-remove-btn {
+    display: none;
+    font-size: 1.2em !important;
+    position: absolute;
+    bottom: .6rem;
+    right: .6rem;
+    padding: .1em .3em !important;
+    background-color: rgba(255,255,255, .7) !important;
 }
-.post-info__list > li {
-	padding-bottom: 1rem;
-}
-.post-info__list > li:not(:first-of-type) {
-	border-top: var(--border2);
-	padding-top: .8rem;
-}
-.post-info__list h3 {
-	margin-top: 0;
-}
-
-.post-comment {
-	padding: 1rem;
-	margin-bottom: 1rem;
-	border: var(--border2);
-	border-radius: var(--border-radius1);
-	background-color: var(--background2);
-}
-.post-comment__date {
-	font-size: .8em;
-	display: block;
-	margin-bottom: 1rem;
-}
+.edit-post__figure--show-image .edit-post__image-remove-btn {display: block;}
 
 
-@media (min-width: 540px) {
+@media (min-width: 720px) {
 
-	.post-info {
-		grid-template-columns: auto minmax(240px, 1fr);
+	.edit-post {
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: none;
-	}
-
+    }
+    .edit-post__figure {
+        min-height: 100%;
+    }
+    .edit-post__info {
+        position: sticky;
+        top: 2rem;
+    }
+    
 }
