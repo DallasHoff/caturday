@@ -41,7 +41,7 @@ require 'page.php';
 						class="<?= $passwordClass ?>"
 						>
                     </label>
-                    <a href="/reset-password/" class="login-field-link">Forgot Password?</a>
+                    <!-- <a href="/reset-password/" class="login-field-link">Forgot Password?</a> -->
                     <div class="spacer"></div>
                     
 					<?php if ($loginError): ?>

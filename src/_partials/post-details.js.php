@@ -1,6 +1,7 @@
 <script>
 (() => {
 
+    // Show local time in timestamp
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var postTimestamps = document.querySelectorAll('.post-details__date-posted');
 
@@ -19,6 +20,19 @@
 
         el.innerText = `${day} ${month} ${year} ${hours}:${minutes}:${seconds} ${meridian}`;
     });
+
+    // Delete button confirmation
+    var deleteBtn = document.querySelector('.post-details__delete');
+    if (deleteBtn) {
+        var deleteClicked = false;
+        deleteBtn.addEventListener('click', (e) => {
+            if (deleteClicked === false) {
+                e.preventDefault();
+                deleteBtn.innerText = 'Confirm?';
+                deleteClicked = true;
+            }
+        });
+    }
 
 })();
 </script>

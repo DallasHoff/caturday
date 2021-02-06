@@ -20,12 +20,12 @@ $postError = null;
 
 function viewPost($postId) {
     global $action;
-    $action = 'view';
     global $post;
-    $post = dbQuery("select * from posts where id=?", array($postId))[0];
     global $postExists;
-    $postExists = !empty($post);
     global $title;
+    $action = 'view';
+    $post = dbQuery("select * from posts where id=?", array($postId))[0];
+    $postExists = !empty($post);
     $title = safe($post['heading']);
 }
 
@@ -33,19 +33,32 @@ function viewPost($postId) {
 if (isset($_GET['id'])) {
     $postId = $_GET['id'];
     if ($authIsLoggedIn) {
-        if (isset($_GET['action']) && $_GET['action'] === 'edit') {
-            // Editing a post
-            $action = 'edit';
+        if (
+            isset($_GET['action']) && 
+            ($_GET['action'] === 'edit' || $_GET['action'] === 'delete')
+        ) {
+            // Editing or deleting a post
+            $action = $_GET['action'];
             $post = dbQuery("select * from posts where id=? and author=?", array(
                 $postId,
                 $authUsername
             ));
             if (empty($post)) {
                 viewPost($postId);
-            } else {
+            } else if ($action === 'edit') {
                 $image = $post[0]['image'];
                 $heading = $post[0]['heading'];
                 $description = $post[0]['description'];
+            } else if ($action === 'delete') {
+                dbQuery("DELETE FROM `posts` WHERE id=? and author=?", array(
+                    $postId,
+                    $authUsername
+                ));
+                logAction('post_deleted', array(
+                    'post_id' => $postId
+                ));
+                header('Location: /profile/?user=' . urlencode($authUsername));
+                exit();
             }
         } else {
             viewPost($postId);
@@ -91,7 +104,43 @@ if ($phpReqMethod === 'POST' && $authIsLoggedIn) {
 
     // Create/edit post
     if ($postError === null) {
-        // TODO
+        if ($postAction === 'create') {
+
+            $newPostId = dbGenId();
+            dbQuery("INSERT INTO `posts` (`id`, `heading`, `description`, `image`, `author`, `date_posted`, `status`) VALUES (?, ?, ?, ?, ?, NOW(), NULL)", array(
+                $newPostId,
+                $heading,
+                $description,
+                rand(0, 3) . '.jpg', // TODO use uploaded image
+                $authUsername
+            ));
+            logAction('post_created', array(
+                'post_id' => $newPostId
+            ));
+            header('Location: /post/?id=' . $newPostId);
+            exit();
+
+        } else if ($postAction === 'edit') {
+
+            $post = dbQuery("select * from posts where id=? and author=?", array(
+                $postId,
+                $authUsername
+            ));
+            if (!empty($post)) {
+                dbQuery("UPDATE `posts` SET `heading` = ?, `description` = ?, `image` = ? WHERE id = ?", array(
+                    $heading,
+                    $description,
+                    rand(0, 3) . '.jpg', // TODO use uploaded image
+                    $postId
+                ));
+                logAction('post_edited', array(
+                    'post_id' => $postId
+                ));
+            }
+            header('Location: /post/?id=' . $postId);
+            exit();
+
+        }
     }
     
 }

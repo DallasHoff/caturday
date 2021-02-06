@@ -1,5 +1,9 @@
-<?php require_once 'post-details.css.php'; ?>
-<?php uiScript('post-details'); ?>
+<?php 
+require_once 'post-details.css.php';
+uiScript('post-details');
+$authUsername = $GLOBALS['authUsername'];
+?>
+<?php  ?>
 <div class="post-details">
 
     <figure class="post-details__figure">
@@ -36,7 +40,21 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <?php ui('share-buttons') ?>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
 
+        <?php if (!empty($author) && $author === $authUsername): ?>
+        <div class="button-set button-set--row">
+            <a class="button post-details__edit" href="?id=<?= safe($id) ?>&action=edit" title="Edit this post">
+                <i class="fad fa-edit icon-left"></i>
+                Edit
+            </a>
+            <a class="button button-secondary post-details__delete" href="?id=<?= safe($id) ?>&action=delete" title="Delete this post">
+                <i class="fad fa-trash-alt icon-left"></i>
+                Delete
+            </a>
+        </div>
+        <?php endif; ?>
 
     </div>
 

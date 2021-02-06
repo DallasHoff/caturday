@@ -10,6 +10,8 @@ html {
     --accent2a: #cc5805;
     --accent2b: #cf7222;
     --accent2c: #f3b75e;
+	--accent2d: #f3c787;
+	--accent2e: #eadbd1;
 	--background1: #030303;
     --background2: #1a1817;
     --background3: #25231f;
@@ -147,13 +149,23 @@ button, a.button {
 	overflow: hidden;
 	cursor: pointer;
 }
+button.button-secondary, a.button.button-secondary {
+	color: var(--accent2a);
+    background-color: var(--accent2e);
+}
 button:hover, a.button:hover {
 	background-color: var(--accent2b);
+}
+button.button-secondary:hover, a.button.button-secondary:hover {
+	background-color: var(--accent2d);
 }
 button:active, a.button:active {
 	transform: scale(.92);
 	background-color: var(--accent2c);
 	transition: none !important;
+}
+button.button-secondary:active, a.button.button-secondary:active {
+	background-color: var(--accent2c);
 }
 input:focus, select:focus, textarea:focus, button:focus, a.button:focus {
 	box-shadow: 0 0 3px 1px var(--accent2c) !important;
@@ -188,6 +200,11 @@ button.plain-button:active, a.button.plain-button:active {
 	transition: none;
 }
 
+.button-set--row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: .5rem;
+}
 .button-set button,
 .button-set a.button {
 	width: 100%;
