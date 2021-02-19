@@ -8,6 +8,7 @@ require 'page.php';
     <?php ui('meta', ['title' => $title]); ?>
     <link rel="stylesheet" href="page.css">
 	<script defer src="/js/form-validity.js"></script>
+	<script defer src="/js/local-timestamps.js"></script>
     <script defer src="page.js"></script>
 </head>
 <body>

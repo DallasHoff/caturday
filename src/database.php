@@ -7,6 +7,8 @@ $db_pw = getenv('DB_PW');
 // Connection
 try {
     $db = new PDO("mysql:host=$db_hn;dbname=$db_db", $db_un, $db_pw);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 } catch (PDOException $e) {
     die('Error Connecting to Database');
 }
@@ -37,9 +39,10 @@ function dbQuery($sql, $params) {
     if (isset($params) && !is_array($params)) throw new Exception('Parameters for SQL query must be supplied as an array.');
 
     $statement = $db->prepare($sql);
-    $query = $statement->execute($params);
+    if ($statement === false) throw new Exception($statement->errorInfo());
 
-    if ($query !== true) throw new Exception($statement->errorInfo());
+    $query = $statement->execute($params);
+    if ($query === false) throw new Exception($statement->errorInfo()[2]);
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

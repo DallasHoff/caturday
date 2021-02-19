@@ -33,6 +33,7 @@ function viewPost($postId) {
 if (isset($_GET['id'])) {
     $postId = $_GET['id'];
     if ($authIsLoggedIn) {
+        // TODO: Allow admins to edit/delete
         if (
             isset($_GET['action']) && 
             ($_GET['action'] === 'edit' || $_GET['action'] === 'delete')

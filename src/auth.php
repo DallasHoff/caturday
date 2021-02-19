@@ -75,7 +75,7 @@ function authCheckSession() {
         $authIsLoggedIn = true;
         $authUsername = $username;
 
-        $isAdmin = dbQuery("select is_admin from users where username=?", array($username))[0]['is_admin'] === '1';
+        $isAdmin = dbQuery("select is_admin from users where username=?", array($username))[0]['is_admin'] === 1;
         if ($isAdmin === true) {
             $authIsAdmin = true;
         }

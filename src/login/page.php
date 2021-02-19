@@ -33,6 +33,7 @@ if ($phpReqMethod === 'POST') {
     }
 
     // Check username and password
+    // TODO: block login if user is_blocked
     if ($loginError === null) {
         $userInfo = dbQuery("select password, is_admin from users where username=?", array($username));
         if (empty($userInfo)) {
@@ -43,7 +44,7 @@ if ($phpReqMethod === 'POST') {
             ));
         } else {
             $passwordHash = $userInfo[0]['password'];
-            $isAdminLogin = $userInfo[0]['is_admin'] === '1';
+            $isAdminLogin = $userInfo[0]['is_admin'] === 1;
             if (!$passwordHash || password_verify($password, $passwordHash) !== true) {
                 $loginError = 'Incorrect username or password.'; // incorrect password
                 logAction('login_failure', array(

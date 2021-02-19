@@ -398,6 +398,9 @@ footer a {
 	header .nav-link--current-page a {
 		color: inherit;
 	}
+	header .nav-link__icon {
+		margin-right: .3rem;
+	}
 	header .nav-link__label {
 		display: inline;
 		font-size: 1em;

@@ -21,9 +21,9 @@ $authUsername = $GLOBALS['authUsername'];
         <div class="spacer"></div>
         <?php endif; ?>
 
-        <p class="post-details__date-posted" data-js-timestamp="<?= strtotime($date_posted) * 1000 ?>">
+        <time class="post-details__date-posted" data-js-timestamp="<?= strtotime($date_posted) * 1000 ?>">
             <?= safe(date_format(date_create($date_posted), 'd F Y h:i:s A e')) ?>
-        </p>
+        </time>
         <div class="spacer"></div>
 
         <?php if (!empty($author)): ?>
