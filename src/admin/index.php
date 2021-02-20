@@ -19,11 +19,11 @@ require 'page.php';
 
                 <form method="GET" class="dashboard-filters">
 
-                    <label>Search: 
+                    <label>Search
                         <input type="text" name="search" value="<?= safe($searchUsername) ?>">
                     </label>
 
-                    <label>Order By: 
+                    <label>Order By
                         <select name="order">
                             <?php foreach ($columns as $k => $v): ?>
                             <option value="<?= safe($k) ?>" <?= $userListOrder === $k ? 'selected' : '' ?>><?= safe($v) ?></option>
@@ -31,7 +31,7 @@ require 'page.php';
                         </select>
                     </label>
 
-                    <label>Limit: 
+                    <label>Limit
                         <select name="limit">
                             <?php foreach ($limits as $k => $v): ?>
                             <option value="<?= safe($v) ?>" <?= $userListLimit === $v ? 'selected' : '' ?>><?= safe($v) ?></option>
