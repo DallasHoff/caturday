@@ -18,28 +18,46 @@ if ($phpReqMethod === 'POST' && !empty($_POST['target_user']) && !empty($_POST['
         case 'lock':
             dbQuery("delete from sessions where username=?", array($targetUser));
             dbQuery("update users set is_locked=1 where username=?", array($targetUser));
+            logAction('admin_locked_user', array(
+                'username' => $targetUser
+            ));
             break;
 
         case 'unlock':
             dbQuery("update users set is_locked=0 where username=?", array($targetUser));
+            logAction('admin_unlocked_user', array(
+                'username' => $targetUser
+            ));
             break;
 
         case 'signout':
             dbQuery("delete from sessions where username=?", array($targetUser));
+            logAction('admin_signed_out_user', array(
+                'username' => $targetUser
+            ));
             break;
 
         case 'promote':
             dbQuery("update users set is_admin=1 where username=?", array($targetUser));
+            logAction('admin_promoted_user', array(
+                'username' => $targetUser
+            ));
             break;
 
         case 'demote':
             dbQuery("update users set is_admin=0 where username=?", array($targetUser));
+            logAction('admin_demoted_user', array(
+                'username' => $targetUser
+            ));
             break;
 
         case 'delete':
             dbQuery("delete from sessions where username=?", array($targetUser));
             dbQuery("delete from posts where author=?", array($targetUser));
             dbQuery("delete from users where username=?", array($targetUser));
+            logAction('admin_deleted_user', array(
+                'username' => $targetUser
+            ));
             break;
 
     }
