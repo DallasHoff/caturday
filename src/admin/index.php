@@ -54,11 +54,11 @@ require 'page.php';
                         <div class="dashboard-table-row__icon">
 
                             <?php if ($user['is_admin'] === 1): ?>
-                            <i class="fad fa-user-crown" title="Admin"></i>
+                            <i class="fad fa-user-crown" title="Admin <?= $user['logged_in'] ? '(Logged In)' : '' ?>"></i>
                             <?php elseif ($user['is_locked'] === 1): ?>
-                            <i class="fad fa-user-lock" title="Locked User"></i>
+                            <i class="fad fa-user-lock" title="Locked User <?= $user['logged_in'] ? '(Logged In)' : '' ?>"></i>
                             <?php else: ?>
-                            <i class="fas fa-user" title="User"></i>
+                            <i class="fas fa-user" title="User <?= $user['logged_in'] ? '(Logged In)' : '' ?>"></i>
                             <?php endif; ?>
                             
                             <?php if ($user['logged_in']): ?>
