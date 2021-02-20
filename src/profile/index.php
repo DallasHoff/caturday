@@ -17,6 +17,13 @@ require 'page.php';
                 <h2>Bad Request</h2>
                 <?php elseif ($userExists === true): ?>
                 <h2>Posts by <?= safe($username) ?></h2>
+                <?php if ($authIsAdmin === true): ?>
+                <a href="/admin/?search=<?= urlencode(safe($username)) ?>">
+                    <i class="fad fa-crown icon-left"></i>
+                    View User on Admin Dashboard
+                </a>
+                <div class="spacer"></div>
+                <?php endif; ?>
                 <?php else: ?>
                 <h2><?= safe($username) ?> Was Not Found</h2>
                 <?php endif; ?>
