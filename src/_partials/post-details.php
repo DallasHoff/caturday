@@ -2,6 +2,7 @@
 require_once 'post-details.css.php';
 uiScript('post-details');
 $authUsername = $GLOBALS['authUsername'];
+$authIsAdmin = $GLOBALS['authIsAdmin'];
 ?>
 <?php  ?>
 <div class="post-details">
@@ -43,7 +44,7 @@ $authUsername = $GLOBALS['authUsername'];
         <div class="spacer"></div>
         <div class="spacer"></div>
 
-        <?php if (!empty($author) && $author === $authUsername): ?>
+        <?php if ((!empty($author) && $author === $authUsername) || $authIsAdmin === true): ?>
         <div class="button-set button-set--row">
             <a class="button post-details__edit" href="?id=<?= safe($id) ?>&action=edit" title="Edit this post">
                 <i class="fad fa-edit icon-left"></i>

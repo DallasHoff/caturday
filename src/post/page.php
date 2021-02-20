@@ -32,37 +32,27 @@ function viewPost($postId) {
 
 if (isset($_GET['id'])) {
     $postId = $_GET['id'];
-    if ($authIsLoggedIn) {
-        // TODO: Allow admins to edit/delete
-        if (
-            isset($_GET['action']) && 
-            ($_GET['action'] === 'edit' || $_GET['action'] === 'delete')
-        ) {
-            // Editing or deleting a post
-            $action = $_GET['action'];
-            $post = dbQuery("select * from posts where id=? and author=?", array(
-                $postId,
-                $authUsername
-            ));
-            if (empty($post)) {
-                viewPost($postId);
-            } else if ($action === 'edit') {
-                $image = $post[0]['image'];
-                $heading = $post[0]['heading'];
-                $description = $post[0]['description'];
-            } else if ($action === 'delete') {
-                dbQuery("DELETE FROM `posts` WHERE id=? and author=?", array(
-                    $postId,
-                    $authUsername
-                ));
-                logAction('post_deleted', array(
-                    'post_id' => $postId
-                ));
-                header('Location: /profile/?user=' . urlencode($authUsername));
-                exit();
-            }
-        } else {
+    if (
+        $authIsLoggedIn && 
+        isset($_GET['action']) && 
+        ($_GET['action'] === 'edit' || $_GET['action'] === 'delete')
+    ) {
+        // Editing or deleting a post
+        $action = $_GET['action'];
+        $post = dbQuery("select * from posts where id=?", array($postId));
+        if (empty($post) || ($post[0]['author'] !== $authUsername && $authIsAdmin !== true)) {
             viewPost($postId);
+        } else if ($action === 'edit') {
+            $image = $post[0]['image'];
+            $heading = $post[0]['heading'];
+            $description = $post[0]['description'];
+        } else if ($action === 'delete') {
+            dbQuery("DELETE FROM `posts` WHERE id=?", array($postId));
+            logAction('post_deleted', array(
+                'post_id' => $postId
+            ));
+            header('Location: /profile/?user=' . urlencode($authUsername));
+            exit();
         }
     } else {
         viewPost($postId);
@@ -123,11 +113,8 @@ if ($phpReqMethod === 'POST' && $authIsLoggedIn) {
 
         } else if ($postAction === 'edit') {
 
-            $post = dbQuery("select * from posts where id=? and author=?", array(
-                $postId,
-                $authUsername
-            ));
-            if (!empty($post)) {
+            $post = dbQuery("select * from posts where id=?", array($postId));
+            if (!empty($post) && ($post[0]['author'] === $authUsername || $authIsAdmin === true)) {
                 dbQuery("UPDATE `posts` SET `heading` = ?, `description` = ?, `image` = ? WHERE id = ?", array(
                     $heading,
                     $description,
