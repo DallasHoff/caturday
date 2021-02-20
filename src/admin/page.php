@@ -72,6 +72,7 @@ $userList = dbQuery("
     left join sessions s 
     on u.username = s.username 
     where u.username like ? 
+    group by u.username 
     order by $userListOrder $userListOrderDir 
     limit ?
 ", array('%' . $searchUsername . '%', $userListLimit));
