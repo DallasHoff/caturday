@@ -5,7 +5,7 @@ $authorLink = '/profile/?user=' . urlencode(safe($author));
 ?>
 <li class="gallery-card">
 
-    <a href="<?= $postLink ?>" class="gallery-card__link">
+    <a href="<?= $postLink ?>" class="gallery-card__link" title="View post">
         <figure class="gallery-card__figure">
             <img src="/img/posts/<?= $image ?>" alt="" class="gallery-card__image" loading="lazy">
         </figure>

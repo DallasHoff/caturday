@@ -26,14 +26,15 @@ require 'page.php';
 
                 <form method="POST" class="edit-post">
 
-                    <figure class="edit-post__figure <?= safe($image) && $image !== true ? 'edit-post__figure--show-image' : '' ?>">
+                    <figure class="edit-post__figure <?= safe($image) && $image !== true ? 'edit-post__figure--show-image' : '' ?>" title="Post image">
                         <div class="edit-post__figure-inner">
                             <i class="fad fa-image edit-post__figure-icon"></i>
                             <input 
                             type="file" 
                             name="image" 
                             <?= ($action === 'create') ? 'required' : '' ?> 
-                            class="edit-post__image-input <?= $imageClass ?>"
+                            class="edit-post__image-input <?= $imageClass ?>" 
+                            aria-label="Post image"
                             >
                         </div>
                         <img src="<?= safe($image) && $image !== true ?  $postImgPath . safe($image) : '' ?>" alt="" class="edit-post__image">

@@ -7,7 +7,7 @@ html {
 	--accent1a: #1d1001;
     --accent1b: #261506;
     --accent1c: #3f250e;
-    --accent2a: #cc5805;
+    --accent2a: #c25304;
     --accent2b: #cf7222;
     --accent2c: #f3b75e;
 	--accent2d: #f3c787;
@@ -88,14 +88,14 @@ address {font-style: normal;}
 
 /* Links */
 a {
-	color: var(--accent2a);
+	color: var(--accent2b);
 	transition: color 400ms;
 	text-decoration: none;
 	cursor: pointer;
 }
-a:hover {color: var(--accent2b); text-decoration: underline;}
-a:active {color: var(--accent2c); transition: none;}
-a.same-page {color: var(--accent2b); cursor: default;}
+a:hover {color: var(--accent2c); text-decoration: underline;}
+a:active {color: var(--accent2d); transition: none;}
+a.same-page {color: var(--accent2c); cursor: default;}
 
 
 /* Forms and Inputs */
