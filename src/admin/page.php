@@ -3,7 +3,7 @@ $title = 'Admin Dashboard';
 
 // Restrict access
 if ($authIsAdmin !== true) {
-    http_response_code(403);
+    header('Location: /');
     exit();
 }
 
