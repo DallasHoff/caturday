@@ -5,7 +5,8 @@ $authUsername = null;
 $authIsAdmin = false;
 
 // Settings
-$usernameMaxlength = 100;
+$daysUntilSessionExpiry = 60;
+$usernameMaxlength = 64;
 $securityQuestionMaxlength = 400;
 
 // Session functions
@@ -34,19 +35,18 @@ function authDestroySession() {
 
 function authCreateSession($username) {
     global $appHost;
+    global $daysUntilSessionExpiry;
 
-    $daysUntilExpiry = 60;
     authDestroySession();
     $token = dbGenToken() . '-' . $username;
-    $tokenHash = password_hash($token, PASSWORD_DEFAULT); // TODO: store and use hashed tokens
 
-    setcookie('appSession', $token, time() + (3600 * 24 * $daysUntilExpiry), '/', $appHost, true, true);
+    setcookie('appSession', $token, time() + (3600 * 24 * $daysUntilSessionExpiry), '/', $appHost, true, true);
 
     dbQuery("INSERT INTO `sessions` (`session_id`, `username`, `token`, `expires`) VALUES (?, ?, ?, NOW() + INTERVAL ? DAY)", array(
         dbGenId(),
         $username,
         $token,
-        $daysUntilExpiry
+        $daysUntilSessionExpiry
     ));
 
     logAction('auth_session_created', array(

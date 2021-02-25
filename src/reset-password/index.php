@@ -7,6 +7,7 @@ require 'page.php';
 <head>
     <?php ui('meta', ['title' => $title]); ?>
     <link rel="stylesheet" href="/css/auth.css">
+	<script defer src="/js/form-validity.js"></script>
 </head>
 <body>
 	<?php ui('header', ['title' => $title]); ?>
@@ -17,7 +18,7 @@ require 'page.php';
 					<h2>Forgot Your Password?</h2>
                     <p>Answer your security question to reset your password and regain access to your account.</p>
                     
-					<?php if ($action === 'get_question'): ?>
+					<?php if ($action === 'get_question' && !empty($securityQuestion)): ?>
                     <div class="spacer"></div>
                     <h3>Security Question</h3>
                     <p><?= safe($securityQuestion) ?></p>
@@ -27,21 +28,44 @@ require 'page.php';
 
                     <?php if ($action === 'initial'): ?>
 					<label>Username
-						<input type="text" name="username" value="<?= safe($username) ?>" maxlength="100" required>
+						<input 
+						type="text" 
+						name="username" 
+						value="<?= safe($username) ?>" 
+						maxlength="<?= $usernameMaxlength ?>" 
+						required 
+						class="<?= $usernameClass ?>"
+						>
 					</label>
                     <div class="spacer"></div>
+					<?php else: ?>
+						<input 
+						type="hidden" 
+						name="username" 
+						value="<?= safe($username) ?>" 
+						>
                     <?php endif; ?>
                     
 					<?php if ($action === 'get_question'): ?>
 					<label>Security Question Answer
-						<input type="text" name="security_answer" value="<?= safe($securityAnswer) ?>" maxlength="200" required>
+						<input 
+						type="text" 
+						name="security_answer" 
+						value="<?= safe($securityAnswer) ?>" 
+						required 
+						autocomplete="off" 
+						class="<?= $securityAnswerClass ?>"
+						>
 					</label>
                     <div class="spacer"></div>
-                    <?php endif; ?>
-                    
-					<?php if ($action === 'get_question'): ?>
 					<label>New Password
-						<input type="password" name="new_password" value="<?= safe($newPassword) ?>" required>
+						<input 
+						type="password" 
+						name="new_password" 
+						value="<?= safe($newPassword) ?>" 
+						required 
+						class="<?= $newPasswordClass ?>"
+						>
                     </label>
                     <div class="spacer"></div>
                     <?php endif; ?>
@@ -55,14 +79,20 @@ require 'page.php';
                     
 					<?php if ($action === 'initial'): ?>
 					<div class="button-set">
-						<button type="submit" name="action" value="get_question">Get Question</button>
+						<button name="action" value="get_question">Get Question</button>
 					</div>
 					<?php elseif ($action === 'get_question'): ?>
 					<div class="button-set">
-						<button type="submit" name="action" value="reset_password">Reset</button>
+						<button name="action" value="reset_password">Reset</button>
                     </div>
                     <?php endif; ?>
-                    
+
+					<input 
+					type="hidden" 
+					name="prev_action" 
+					value="<?= safe($action) ?>" 
+                    >
+
 				</form>
 			</section>
 		</article>

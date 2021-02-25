@@ -10,6 +10,14 @@ $usernameClass = '';
 $passwordClass = '';
 
 
+// Success message
+$successMessage = '';
+$success = $_GET['success'];
+if (!empty($success) && $success === 'reset_password') {
+    $successMessage = 'Your password was successfully reset. You may now use it to log in.';
+}
+
+
 // POST fields
 if ($phpReqMethod === 'POST') {
 
