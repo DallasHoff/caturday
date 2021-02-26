@@ -83,7 +83,7 @@ require 'page.php';
 					</div>
 					<?php elseif ($action === 'get_question'): ?>
 					<div class="button-set">
-						<button name="action" value="reset_password">Reset</button>
+						<button name="action" value="reset_password">Reset Password</button>
                     </div>
                     <?php endif; ?>
 

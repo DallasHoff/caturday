@@ -44,7 +44,83 @@ if ($phpReqMethod === 'POST') {
 
         switch ($action) {
 
-            // Go to /login/?success=reset_password after reset
+            case 'get_question':
+                $userInfo = dbQuery("select security_question, is_admin from users where username=?", array($username));
+                if (empty($userInfo)) {
+                    // User exists check
+                    $resetError = 'That username does not exist. Please check your input.';
+                    logAction('get_security_question_failure', array(
+                        'reason' => 'invalid username',
+                        'username' => $username
+                    ));
+                } else {
+                    // Display security question
+                    $securityQuestion = $userInfo[0]['security_question'];
+                    $isAdmin = $userInfo[0]['is_admin'] === 1;
+                    logAction('got_security_question', array(
+                        'username' => $username,
+                        'is_admin' => $isAdmin ? '1' : '0'
+                    ));
+                }
+                break;
+
+            case 'reset_password':
+                $userInfo = dbQuery("select security_question, security_answer, is_admin, is_locked from users where username=?", array($username));
+                if (empty($userInfo)) {
+                    // User exists check
+                    $resetError = 'That username does not exist. Please check your input.';
+                    logAction('reset_password_failure', array(
+                        'reason' => 'invalid username',
+                        'username' => $username
+                    ));
+                } else {
+                    $securityQuestion = $userInfo[0]['security_question'];
+                    $securityAnswerHash = $userInfo[0]['security_answer'];
+                    $isAdmin = $userInfo[0]['is_admin'] === 1;
+                    $isLocked = $userInfo[0]['is_locked'] === 1;
+                    if (password_verify($securityAnswer, $securityAnswerHash) !== true) {
+                        // Answer check
+                        $resetError = 'Your answer to the security question was incorrect. Please check your input.';
+                        logAction('reset_password_failure', array(
+                            'reason' => 'incorrect security answer',
+                            'username' => $username,
+                            'is_admin' => $isAdmin ? '1' : '0'
+                        ));
+                    } else if ($isLocked === true) {
+                        // User is locked
+                        $resetError = 'Your account has been locked. If you think this was done in error, please contact us.';
+                        logAction('reset_password_failure', array(
+                            'reason' => 'user locked',
+                            'username' => $username,
+                            'is_admin' => $isAdmin ? '1' : '0'
+                        ));
+                    } else {
+                        // Change password
+                        try {
+                            $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+                            dbQuery("update users set password=? where username=?", array(
+                                $newPasswordHash,
+                                $username
+                            ));
+                            logAction('reset_password_success', array(
+                                'username' => $username,
+                                'is_admin' => $isAdmin ? '1' : '0'
+                            ));
+                            // Redirect on success
+                            header('Location: /login/?success=reset_password');
+                            exit();
+                        } catch (Throwable $e) {
+                            $resetError = 'Oops, an error occurred. Please try again.';
+                            logAction('reset_password_failure', array(
+                                'reason' => 'password update error',
+                                'username' => $username,
+                                'is_admin' => $isAdmin ? '1' : '0'
+                            ));
+                        }
+                    }
+                }
+                break;
+
         }
 
     }
