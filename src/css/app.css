@@ -353,6 +353,8 @@ main article > section > p {
 }
 
 footer {
+	z-index: 2500;
+	position: relative;
 	font-size: .8em;
 	padding: 1.5rem 0 calc(3rem + var(--navbar-height)) 0;
 	border-top: var(--border-major1);
