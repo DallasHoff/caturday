@@ -11,7 +11,7 @@ $postImgFullPath = '//' . $appHost . $postImgPath;
 $postImgLocalPath = $phpDocRoot . $postImgPath;
 $postImgMaxSizeBytes = 2000000;
 $postImgMaxSizeName = '2 MB';
-$postImgAllowedTypes = array('.jpg', '.jpeg', '.png', '.webp', '.gif', '.tif', '.tiff', '.bmp', '.bitmap');
+$postImgAllowedTypes = array('.jpg', '.jpeg', '.jfif', '.png', '.webp', '.gif', '.tif', '.tiff', '.bmp', '.bitmap');
 $postImgInputAccept = implode(', ', $postImgAllowedTypes);
 
 $image = null;
