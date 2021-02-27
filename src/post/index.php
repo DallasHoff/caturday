@@ -24,20 +24,21 @@ require 'page.php';
                 <h2>Edit Post</h2>
                 <?php endif; ?>
 
-                <form method="POST" class="edit-post">
+                <form method="POST" class="edit-post" enctype="multipart/form-data">
 
                     <figure class="edit-post__figure <?= safe($image) && $image !== true ? 'edit-post__figure--show-image' : '' ?>" title="Post image">
                         <div class="edit-post__figure-inner">
                             <i class="fad fa-image edit-post__figure-icon"></i>
                             <input 
                             type="file" 
+                            accept="<?= $postImgInputAccept ?>" 
                             name="image" 
                             <?= ($action === 'create') ? 'required' : '' ?> 
                             class="edit-post__image-input <?= $imageClass ?>" 
                             aria-label="Post image"
                             >
                         </div>
-                        <img src="<?= safe($image) && $image !== true ?  $postImgPath . safe($image) : '' ?>" alt="" class="edit-post__image">
+                        <img src="<?= safe($image) && $image !== true ?  $postImgFullPath . safe($image) : '' ?>" alt="" class="edit-post__image">
                         <button type="button" class="edit-post__image-remove-btn plain-button">
                             <i class="fad fa-times-square icon-left"></i> 
                             Replace
