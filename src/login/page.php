@@ -43,6 +43,10 @@ if ($phpReqMethod === 'POST') {
     // Authenticate
     if ($loginError === null) {
         $userInfo = dbQuery("select password, is_admin, is_locked from users where username=?", array($username));
+        $passwordHash = $userInfo[0]['password'];
+        $isAdminLogin = $userInfo[0]['is_admin'] === 1;
+        $isUserLocked = $userInfo[0]['is_locked'] === 1;
+        $isPasswordCorrect = password_verify($password, $passwordHash);
         // Check username
         if (empty($userInfo)) {
             $loginError = 'Incorrect username or password.'; // username does not exist
@@ -50,26 +54,22 @@ if ($phpReqMethod === 'POST') {
                 'reason' => 'invalid username',
                 'username' => $username
             ));
-        } else {
-            $passwordHash = $userInfo[0]['password'];
-            $isAdminLogin = $userInfo[0]['is_admin'] === 1;
-            $isUserLocked = $userInfo[0]['is_locked'] === 1;
-            // Check password and if user account is locked
-            if (!$passwordHash || password_verify($password, $passwordHash) !== true) {
-                $loginError = 'Incorrect username or password.'; // incorrect password
-                logAction('login_failure', array(
-                    'reason' => 'incorrect password',
-                    'username' => $username,
-                    'is_admin' => $isAdminLogin ? '1' : '0'
-                ));
-            } else if ($isUserLocked) {
-                $loginError = 'Your account has been locked. If you think this was done in error, please contact us.';
-                logAction('login_failure', array(
-                    'reason' => 'user locked',
-                    'username' => $username,
-                    'is_admin' => $isAdminLogin ? '1' : '0'
-                ));
-            }
+        // Check password
+        } else if (!$passwordHash || $isPasswordCorrect !== true) {
+            $loginError = 'Incorrect username or password.'; // incorrect password
+            logAction('login_failure', array(
+                'reason' => 'incorrect password',
+                'username' => $username,
+                'is_admin' => $isAdminLogin ? '1' : '0'
+            ));
+        // Check if user account is locked
+        } else if ($isUserLocked) {
+            $loginError = 'Your account has been locked. If you think this was done in error, please contact us.';
+            logAction('login_failure', array(
+                'reason' => 'user locked',
+                'username' => $username,
+                'is_admin' => $isAdminLogin ? '1' : '0'
+            ));
         }
     }
 
