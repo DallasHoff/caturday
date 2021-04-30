@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+/src/img/posts/*
+/src/img/avatars/*
 
 
 # local env files
