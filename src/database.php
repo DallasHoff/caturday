@@ -1,8 +1,8 @@
 <?php
-$db_hn = getenv('DB_HN');
-$db_db = getenv('DB_DB');
-$db_un = getenv('DB_UN');
-$db_pw = getenv('DB_PW');
+$db_hn = getenv('C_DB_HN');
+$db_db = getenv('C_DB_DB');
+$db_un = getenv('C_DB_UN');
+$db_pw = getenv('C_DB_PW');
 
 // Connection
 try {
@@ -32,7 +32,7 @@ function dbGenToken() {
 }
 
 // Query
-function dbQuery($sql, $params) {
+function dbQuery($sql, $params = []) {
     global $db;
 
     if (!isset($sql)) throw new Exception('No SQL supplied for query.');

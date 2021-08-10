@@ -7,7 +7,7 @@ $phpReqMethod = $_SERVER['REQUEST_METHOD'];
 $phpUserIp = $_SERVER['REMOTE_ADDR'];
 $phpUserPort = $_SERVER['REMOTE_PORT'];
 
-$appHost = 'websec.dallashoffman.com';
+$appHost = 'caturday.dallashoffman.com';
 $appComponentScripts = array();
 
 // Database
@@ -19,7 +19,7 @@ require_once 'logging.php';
 authCheckSession();
 
 // UI components
-function ui($component, $props) {
+function ui($component, $props = []) {
     extract($props);
     require $_SERVER['DOCUMENT_ROOT'] . '/_partials/' . $component . '.php';
 }
