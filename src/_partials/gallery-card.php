@@ -43,11 +43,6 @@ $authorLink = '/profile/?user=' . urlencode(safe($author));
         </h3>
         <div class="gallery-card__author">A User</div>
         <?php endif; ?>
-        
-
-        <?php if (!empty($description)): ?>
-        <p class="gallery-card__description"><?= safe($description) ?></p>
-        <?php endif; ?>
 
 
     </div>
