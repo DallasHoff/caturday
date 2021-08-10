@@ -1,0 +1,22 @@
+{
+    "name": "Caturday Night",
+    "short_name": "Caturday",
+    "scope": "/",
+    "start_url": "/",
+    "description": "Every night is Caturday Night.",
+    "icons": [
+        {
+            "src": "/img/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#CF7222",
+    "background_color": "#1D1001",
+    "display": "standalone"
+}
