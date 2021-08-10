@@ -1,6 +1,6 @@
 <style>
 .gallery-card {
-	background-color: var(--background2);
+	background-color: var(--background4);
 	border-radius: var(--border-radius1);
 	box-shadow: var(--material-shadow1);
 	transition: box-shadow .3s;

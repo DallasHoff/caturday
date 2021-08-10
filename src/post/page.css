@@ -38,8 +38,9 @@
     position: absolute;
     bottom: .6rem;
     right: .6rem;
-    padding: .2em .4em !important;
-    background-color: rgba(255,255,255, .7) !important;
+    padding: .4em .8em !important;
+    color: var(--text2) !important;
+    background-color: rgba(0, 0, 0, .6) !important;
 }
 .edit-post__figure--show-image {min-height: auto !important;}
 .edit-post__figure--show-image .edit-post__figure-inner {display: none;}
