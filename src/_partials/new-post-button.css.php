@@ -7,6 +7,7 @@
 	position: fixed;
 	bottom: calc(1.5rem + var(--navbar-height));
 	right: 1.5rem;
+	right: calc(1.5rem + env(safe-area-inset-right));
 	width: 4rem;
 	height: 4rem;
 	font-size: 2.5rem;
