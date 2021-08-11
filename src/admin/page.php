@@ -76,7 +76,7 @@ $columns = array(
 $limits = array(25, 50, 100, 200, 500);
 
 $order = $_GET['order'];
-$userListOrder = array_key_exists($order, $columns) ? $order : 'username';
+$userListOrder = array_key_exists($order, $columns) ? $order : 'date_joined';
 $userListOrderDir = $userListOrder === 'username' ? 'asc' : 'desc';
 
 $limit = intval($_GET['limit']);
