@@ -10,11 +10,13 @@
 	right: calc(1.5rem + env(safe-area-inset-right));
 	width: 4rem;
 	height: 4rem;
-	font-size: 2.5rem;
+	border-radius: 2rem;
+	font-size: 2rem;
+	font-weight: bold;
 	line-height: 1em;
+	text-decoration: none !important;
 	color: var(--accent1b);
 	background-color: var(--accent2a);
-	border-radius: 50%;
 	box-shadow: var(--material-shadow1);
 	transition: box-shadow .3s;
 }
@@ -22,5 +24,17 @@
 	color: var(--accent1c);
 	background-color: var(--accent2b);
 	box-shadow: var(--material-shadow2);
+}
+
+
+@media (min-width: 720px) {
+	.new-post-button {
+		width: auto;
+		padding: 0 1rem;
+	}
+	.new-post-button::after {
+		content: "Post";
+		margin-left: .5rem;
+    }
 }
 </style>

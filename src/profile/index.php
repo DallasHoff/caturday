@@ -39,6 +39,11 @@ require 'page.php';
                 <?php endif; ?>
 
 			</section>
+
+            <?php if ($authIsLoggedIn && $username === $authUsername): ?>
+                <?php ui('new-post-button'); ?>
+            <?php endif; ?>
+
 		</article>
 	</main>
 	<?php ui('footer'); ?>
