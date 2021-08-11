@@ -34,7 +34,7 @@ function viewPost($postId) {
     $action = 'view';
     $post = dbQuery("select * from posts where id=?", array($postId))[0];
     $postExists = !empty($post);
-    $title = safe($post['heading']);
+    $title = $post['heading'];
 }
 
 

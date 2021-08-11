@@ -6,7 +6,7 @@
 
     <?php if ($hideHero !== true): ?>
     <div class="header-hero">
-        <h1 class="header-hero__heading"><?= $title ?></h1>
+        <h1 class="header-hero__heading"><?= safe($title) ?></h1>
     </div>
     <?php endif; ?>
 

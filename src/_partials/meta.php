@@ -1,9 +1,10 @@
-<title><?= $title ? $title . ' | ' : '' ?>Caturday Night</title>
+<title><?= $title ? safe($title) . ' | ' : '' ?>Caturday Night</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="application-name" content="Caturday Night">
 <meta name="apple-mobile-web-app-title" content="Caturday Night">
-<meta name="description" content="Every night is Caturday Night.">
+<?php if ($author): ?><meta name="author" content="<?= safe($author) ?>"><?php endif; ?>
+<meta name="description" content="<?= $description ? safe($description) : 'Every night is Caturday Night.' ?>">
 <meta name="theme-color" content="#CF7222">
 <meta name="color-scheme" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">

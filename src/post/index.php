@@ -5,7 +5,11 @@ require 'page.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php ui('meta', ['title' => $title]); ?>
+    <?php ui('meta', [
+        'title' => $title, 
+        'author' => ($action === 'view') ? $post['author'] : '', 
+        'description' => ($action === 'view') ? $post['description'] : ''
+    ]); ?>
     <link rel="stylesheet" href="page.css">
 	<script defer src="/js/form-validity.js"></script>
 	<script defer src="/js/local-timestamps.js"></script>
