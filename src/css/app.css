@@ -96,8 +96,8 @@ a {
 }
 @media (hover: hover) {
 	a:hover {color: var(--accent2c); text-decoration: underline;}
+	a:active {color: var(--accent2d); transition: none;}
 }
-a:active {color: var(--accent2d); transition: none;}
 a.same-page {color: var(--accent2c); cursor: default;}
 
 
@@ -160,19 +160,19 @@ button.button-secondary, a.button.button-secondary {
 	button:hover, a.button:hover {
 		background-color: var(--accent2b);
 	}
+	button:active, a.button:active {
+		transform: scale(.92);
+		background-color: var(--accent2c);
+		transition: none !important;
+	}
 	button.button-secondary:hover, a.button.button-secondary:hover {
 		background-color: var(--accent2d);
 	}
+	button.button-secondary:active, a.button.button-secondary:active {
+		background-color: var(--accent2c);
+	}
 }
-button:active, a.button:active {
-	transform: scale(.92);
-	background-color: var(--accent2c);
-	transition: none !important;
-}
-button.button-secondary:active, a.button.button-secondary:active {
-	background-color: var(--accent2c);
-}
-input:focus, select:focus, textarea:focus, button:focus, a.button:focus {
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a.button:focus-visible {
 	box-shadow: 0 0 3px 1px var(--accent2c) !important;
     outline: none;
 }
@@ -200,11 +200,11 @@ button.plain-button, a.button.plain-button {
 	button.plain-button:hover, a.button.plain-button:hover {
 		color: var(--accent2b);
 	}
-}
-button.plain-button:active, a.button.plain-button:active {
-	color: var(--accent2c); 
-	transform: none; 
-	transition: none;
+	button.plain-button:active, a.button.plain-button:active {
+		color: var(--accent2c); 
+		transform: none; 
+		transition: none;
+	}
 }
 
 .button-set--row {
@@ -267,10 +267,10 @@ footer a {
 	footer a:hover {
 		color: var(--accent2c);
 	}
-}
-header a:active,
-footer a:active {
-	color: var(--accent2b);
+	header a:active,
+	footer a:active {
+		color: var(--accent2b);
+	}
 }
 header > .header-inner,
 main > article,
