@@ -6,9 +6,6 @@
 	transition: box-shadow .3s;
 	overflow: hidden;
 }
-.gallery-card:hover {
-	box-shadow: var(--material-shadow2);
-}
 .gallery-card__link {
 	display: block;
 	text-decoration: none;
@@ -62,6 +59,15 @@
 			object-fit: cover;
 			height: 100%;
         }
+	}
+
+}
+
+
+@media (hover: hover) {
+
+	.gallery-card:hover {
+		box-shadow: var(--material-shadow2);
 	}
 
 }

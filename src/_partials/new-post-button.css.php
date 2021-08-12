@@ -20,14 +20,10 @@
 	box-shadow: var(--material-shadow1);
 	transition: box-shadow .3s;
 }
-.new-post-button:hover {
-	color: var(--accent1c);
-	background-color: var(--accent2b);
-	box-shadow: var(--material-shadow2);
-}
 
 
 @media (min-width: 720px) {
+
 	.new-post-button {
 		width: auto;
 		padding: 0 1rem;
@@ -36,5 +32,17 @@
 		content: "Post";
 		margin-left: .5rem;
     }
+
+}
+
+
+@media (hover: hover) {
+
+	.new-post-button:hover {
+		color: var(--accent1c);
+		background-color: var(--accent2b);
+		box-shadow: var(--material-shadow2);
+	}
+
 }
 </style>

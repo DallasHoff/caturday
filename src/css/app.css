@@ -94,7 +94,9 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
-a:hover {color: var(--accent2c); text-decoration: underline;}
+@media (hover: hover) {
+	a:hover {color: var(--accent2c); text-decoration: underline;}
+}
 a:active {color: var(--accent2d); transition: none;}
 a.same-page {color: var(--accent2c); cursor: default;}
 
@@ -154,11 +156,13 @@ button.button-secondary, a.button.button-secondary {
 	color: var(--accent2a);
     background-color: var(--accent2e);
 }
-button:hover, a.button:hover {
-	background-color: var(--accent2b);
-}
-button.button-secondary:hover, a.button.button-secondary:hover {
-	background-color: var(--accent2d);
+@media (hover: hover) {
+	button:hover, a.button:hover {
+		background-color: var(--accent2b);
+	}
+	button.button-secondary:hover, a.button.button-secondary:hover {
+		background-color: var(--accent2d);
+	}
 }
 button:active, a.button:active {
 	transform: scale(.92);
@@ -192,8 +196,10 @@ button.plain-button, a.button.plain-button {
 	background: none;
 	transition: color 400ms;
 }
-button.plain-button:hover, a.button.plain-button:hover {
-	color: var(--accent2b);
+@media (hover: hover) {
+	button.plain-button:hover, a.button.plain-button:hover {
+		color: var(--accent2b);
+	}
 }
 button.plain-button:active, a.button.plain-button:active {
 	color: var(--accent2c); 
@@ -256,9 +262,11 @@ header a,
 footer a {
 	color: var(--text1);
 }
-header a:hover,
-footer a:hover {
-	color: var(--accent2c);
+@media (hover: hover) {
+	header a:hover,
+	footer a:hover {
+		color: var(--accent2c);
+	}
 }
 header a:active,
 footer a:active {
