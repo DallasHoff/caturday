@@ -88,7 +88,7 @@ $userList = dbQuery("
     select u.username, u.date_joined, u.is_admin, u.is_locked, (s.expires > NOW()) as logged_in
     from users u 
     left join sessions s 
-    on u.username = s.username 
+    on u.username = s.username and s.expires > NOW() 
     where u.username like ? 
     group by u.username 
     order by $userListOrder $userListOrderDir 
