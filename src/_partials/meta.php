@@ -17,6 +17,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 <link rel="stylesheet" type="text/css" href="/css/app.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Yusei+Magic&amp;display=swap">
+<noscript>
+    <link href="/css/icons/css/all.min.css" rel="stylesheet">
+</noscript>
 <script async src="https://kit.fontawesome.com/b520a6ace5.js" crossorigin="anonymous" data-swup-ignore-script></script>
 <script async src="https://static.addtoany.com/menu/page.js" data-swup-ignore-script></script>
 <script defer src="https://unpkg.com/swup@2.0.14/dist/swup.min.js" data-swup-ignore-script></script>
