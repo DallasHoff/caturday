@@ -26,6 +26,10 @@ require 'page.php';
                     <?php if ($action === 'create'): ?>
                     <h2>Create New Post</h2>
                     <?php elseif ($action === 'edit'): ?>
+                    <a href="/post/?id=<?= safe($postId) ?>">
+                        <i class="fad fa-arrow-circle-left icon-left"></i> 
+                        Back to Post
+                    </a>
                     <h2>Edit Post</h2>
                     <?php endif; ?>
 
