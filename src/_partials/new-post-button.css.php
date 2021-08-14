@@ -18,7 +18,15 @@
 	color: var(--accent1b);
 	background-color: var(--accent2a);
 	box-shadow: var(--material-shadow1);
-	transition: box-shadow .3s;
+	transform: none;
+	opacity: 1;
+	transition: box-shadow .3s, transform .3s, opacity .3s;
+}
+
+html.is-animating .new-post-button {
+	transform: translateY(5rem);
+	opacity: 0;
+	pointer-events: none;
 }
 
 

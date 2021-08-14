@@ -8,16 +8,18 @@ require 'home.php';
 	<?php ui('meta', ['title' => $title]); ?>
 </head>
 <body>
-	<?php ui('header', ['title' => $title]); ?>
-	<main>
-		<article>
-			<section>
-				<h2>Recent Posts</h2>
-				<?php ui('card-gallery', ['cards' => $posts]); ?>
-			</section>
+	<div id="app">
+		<?php ui('header', ['title' => $title]); ?>
+		<main>
+			<article class="transition-page">
+				<section>
+					<h2>Recent Posts</h2>
+					<?php ui('card-gallery', ['cards' => $posts]); ?>
+				</section>
+			</article>
 			<?php ui('new-post-button'); ?>
-		</article>
-	</main>
-	<?php ui('footer'); ?>
+		</main>
+		<?php ui('footer'); ?>
+	</div>
 </body>
 </html>

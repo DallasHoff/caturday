@@ -4,7 +4,6 @@ uiScript('post-details');
 $authUsername = $GLOBALS['authUsername'];
 $authIsAdmin = $GLOBALS['authIsAdmin'];
 ?>
-<?php  ?>
 <div class="post-details">
 
     <figure class="post-details__figure">
@@ -46,11 +45,11 @@ $authIsAdmin = $GLOBALS['authIsAdmin'];
 
         <?php if ((!empty($author) && $author === $authUsername) || $authIsAdmin === true): ?>
         <div class="button-set button-set--row">
-            <a class="button post-details__edit" href="?id=<?= safe($id) ?>&action=edit" title="Edit this post">
+            <a class="button post-details__edit" href="/post/?id=<?= safe($id) ?>&action=edit" title="Edit this post">
                 <i class="fad fa-edit icon-left"></i>
                 Edit
             </a>
-            <a class="button button-secondary post-details__delete" href="?id=<?= safe($id) ?>&action=delete" title="Delete this post">
+            <a class="button button-secondary post-details__delete" href="/post/?id=<?= safe($id) ?>&action=delete" title="Delete this post">
                 <i class="fad fa-trash-alt icon-left"></i>
                 Delete
             </a>

@@ -356,11 +356,32 @@ header .header-hero__heading {
 	position: relative;
 	margin: 1rem;
 	text-align: center;
+	transform: none;
+	opacity: 1;
+	transition: transform .3s, opacity .3s;
+}
+html.is-animating header .header-hero__heading {
+	transform: translateY(-3rem);
+	opacity: 0;
 }
 
 main {
 	background-color: var(--background3);
 	padding: 2rem 0;
+	overflow: hidden;
+}
+main article.transition-page {
+	transform: none;
+	opacity: 1;
+	transition: transform .4s, opacity .4s;
+}
+html.is-animating main article.transition-page {
+	transform: translateX(3rem);
+	opacity: 0;
+}
+html.is-leaving main article.transition-page {
+	transform: translateX(-3rem);
+	opacity: 0;
 }
 main article > section {
 	margin-bottom: 3rem;
