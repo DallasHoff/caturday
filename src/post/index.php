@@ -48,7 +48,7 @@ require 'page.php';
                                 >
                             </div>
                             <img src="<?= safe($image) && $image !== true ?  $postImgFullPath . safe($image) : '' ?>" alt="" class="edit-post__image">
-                            <button type="button" class="edit-post__image-remove-btn plain-button">
+                            <button type="button" class="edit-post__image-remove-btn plain-button" style="display: none;">
                                 <i class="fad fa-times-square icon-left"></i> 
                                 Replace
                             </button>

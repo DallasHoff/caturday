@@ -20,6 +20,7 @@
     }
 
     if (imgRemoveBtn) {
+        imgRemoveBtn.style.display = null;
         imgRemoveBtn.addEventListener('click', (e) => {
             imgInput.value = '';
             imgInput.required = true;
